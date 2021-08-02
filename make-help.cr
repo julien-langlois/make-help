@@ -16,7 +16,7 @@ def make_help(input)
       comments, command = match[1].lines, match[2]
 
       help = comments[0].strip + comments[1..-1].map do |comment|
-        " " * indent + comment
+        "\n " + " " * indent + comment
       end.join
 
       # Highlight `code`
@@ -24,7 +24,7 @@ def make_help(input)
         "\033[36m#{code}\033[0m"
       end
 
-      "\n \033[32m#{command.ljust indent}\033[0m#{help}"
+      "\033[32m#{command.ljust indent}\033[0m#{help}"
     end
 
     result.unshift("\n \033[1m\033[31;1m#{section}\033[0m") if section
