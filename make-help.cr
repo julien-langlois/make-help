@@ -9,14 +9,14 @@ def make_help(input)
 
   return "No commands with comments found" if commands.empty?
 
-  indent = commands.map(&.size).max + 1
+  indent = commands.map(&.size).max + 12
 
   sections_with_goals.map do |(section, goals)|
     result = goals.map do |match|
       comments, command = match[1].lines, match[2]
 
       help = comments[0].strip + comments[1..-1].map do |comment|
-        "\n " + " " * indent + comment
+        " " * indent + comment
       end.join
 
       # Highlight `code`
